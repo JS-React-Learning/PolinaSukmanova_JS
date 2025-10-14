@@ -23,7 +23,7 @@ fullPrice > 30000
   ? console.log("Скидка не предусмотрена")
   : fullPrice < 0
   ? console.log("Что то пошло не так")
-  : "";
+  : null;
 
 console.log("title is", typeof title);
 console.log("fullPrice is", typeof fullPrice);
