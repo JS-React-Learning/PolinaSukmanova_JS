@@ -1,5 +1,9 @@
 "use strict";
 
+let allServicePrices;
+let fullPrice;
+let servicePercentPrice;
+
 let title = prompt("Как называется ваш проект?");
 let screens = prompt("Какие типы экранов нужно разработать?");
 let screenPrice = +prompt("Сколько будет стоить данная работа?");
@@ -8,6 +12,7 @@ let service1 = prompt("Какой дополнительный тип услуг
 let servicePrice1 = +prompt("Сколько это будет стоить?");
 let service2 = prompt("Какой дополнительный тип услуги нужен?");
 let servicePrice2 = +prompt("Сколько это будет стоить?");
+let rollback = 33;
 
 // let title = " КаЛьКулятор Верстки";
 // let screens = "Простые, сложные";
@@ -17,13 +22,6 @@ let servicePrice2 = +prompt("Сколько это будет стоить?");
 // let servicePrice1 = 50;
 // let service2 = "Проект3";
 // let servicePrice2 = 600;
-
-let rollback = 33;
-
-let fullPrice = screenPrice + servicePrice1 + servicePrice2;
-let servicePercentPrice = fullPrice - fullPrice * (rollback / 100);
-
-let allServicePrices;
 
 const showTypeOf = function (variable) {
   console.log(`${variable} is`, typeof variable);
@@ -54,17 +52,17 @@ function getTitle(title) {
 }
 
 function getServicePercentPrices(fullPrice, rollback) {
-  return fullPrice - fullPrice * (rollback / 100);
+  return Math.ceil(fullPrice - fullPrice * (rollback / 100));
 }
-
-showTypeOf(title);
-showTypeOf(screenPrice);
-showTypeOf(adaptive);
 
 allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
 fullPrice = getFullPrice(screenPrice, allServicePrices);
 title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
+
+showTypeOf(title);
+showTypeOf(screenPrice);
+showTypeOf(adaptive);
 
 console.log(allServicePrices);
 console.log(fullPrice);
